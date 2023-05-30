@@ -1,0 +1,63 @@
+﻿<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shop Category page</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Fashon Category</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br />
+<br />
+<br />
+@model IEnumerable<SanPham>
+<div class="container">
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>@item.ImageUrl</td>
+                    <td>@item.TheLoai.Name</td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="upsert" asp-route-id="@item.Id">Edit</a>
+                        <br />
+                        <br />
+                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <br />
+                        @*@<a onclice="Xoa(@item.Id, $(this)">Delete</a>*@
+                    </td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+    <a asp-controller="SanPham" asp-action="Upsert" class="btn btn-primary">Thêm Mới</a>
+
+    <br />
+    <br />
+    <br />
+</div>
+<script>
+       const xoa=(id, row ) => {
+        $.ajax ({
+            url: `SanPham/Delete/${id}`,
+            type: "POST",
+            // success : function ( data ) {
+            // 
+            })
+        .done(function (data){
+               row.closest("tr").remove();
+        })
+        }
+</script>

@@ -1,0 +1,48 @@
+﻿<html>
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shop Category page</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Fashon Category</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br />
+<br />
+<br />
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên Thể Loai</th>
+                <th>Ngày Tạo</th>
+                <th> Chức Năng </th>
+            </tr>
+        </thead>
+        @foreach(var item in ViewBag.TheLoai)
+        {
+            <tbody>
+                <tr>
+                    <td width="30%">@item.Name</td>
+                    <td width="70%">@string.Format("{0:dd/MM/yyyy}",item.DateCreated)</td>
+                    <td width="40%"><a asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                    <td width="40%"><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                </tr>
+            </tbody>
+        }
+    </table>
+    <a asp-controller="TheLoai" asp-action="Create" class="btn btn-primary">Thêm Mới</a>
+</div>
+<br />
+<br />
+<br />
+</html>

@@ -1,0 +1,54 @@
+﻿<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>CheckOut</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">CheckOut</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<!-- End Banner Area -->
+<div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                
+                <td>Id</td>
+                <td>Name</td>
+                <td>PhoneMunber</td>
+                <td>Address</td>
+                <td>orderStatus</td>
+                <td>Total</td>
+                <td>          </td>
+
+            </tr>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Address</td>
+                    <td>@item.orderStatus</td>
+                    <td>@item.Total</td>
+                    <td>
+                        <button class="w-15 primary-btn">Chi Tiết</button>
+                     </td>
+                </tr>
+                
+            }
+
+        </tbody>
+    </table>
+</div>
+<br />
+<br />
+<br />

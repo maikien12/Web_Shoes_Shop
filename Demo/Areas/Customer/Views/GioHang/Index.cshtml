@@ -1,0 +1,161 @@
+﻿
+
+@model GioHangViewModel
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Shopping Cart</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="category.html">Cart</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<section class="cart_area">
+<div class="container">
+    <div class="cart_inner">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.DsGioHang)
+                    {
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img width="170" height="150"  src="@item.SanPham.ImageUrl" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a>@String.Format("{0:0,0}",item.SanPham.Price) VND</a>
+                            </td>
+                            <td>
+                                <div class="product_count">
+                                    <input type="text" name="qty" id="sst" maxlength="12" value="@item.Quantity" title="Quantity:"
+                                       class="input-text qty">
+
+                                        <a asp-action="Tang" asp-route-giohangId="@item.Id" style="min-width: 20px"
+                                       class="reduced items-count" type="button">
+                                            <i class="lnr lnr-chevron-up"></i>
+                                        </a>
+
+                                    <a asp-action="Giam" asp-route-giohangId="@item.Id" style="min-width: 20px"
+                                        class="increase items-count" type="button">
+                                        <i class="lnr lnr-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                    <a>@String.Format("{0:0,0}",item.ProductPrice) VND</a>
+                            </td>
+                            <td> 
+                                <a asp-action="Xoa" asp-route-giohangId="@item.Id" class="btn-remove">
+                                    <i class="icon-close">Delete</i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                    <tr class="bottom_button">
+                        <td>
+                            <a class="gray_btn" href="#">Update Cart</a>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="cupon_text d-flex align-items-center">
+                                <input type="text" placeholder="Coupon Code">
+                                <a class="primary-btn" href="#">Apply</a>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <h5>Subtotal</h5>
+                           
+                        </td>
+
+                        <td>
+                                <a>@string.Format("{0:0,0}",Model.HoaDon.Total) VND</a>
+                        </td>
+                    </tr>
+                    <tr class="shipping_area">
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <h5>Shipping</h5>
+                        </td>
+                        <td>
+                            <div class="shipping_box">
+                                <ul class="list">
+                                    <li><a href="#">Flat Rate: $5.00</a></li>
+                                    <li><a href="#">Free Shipping</a></li>
+                                    <li><a href="#">Flat Rate: $10.00</a></li>
+                                    <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                </ul>
+                                <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
+                                <select class="shipping_select">
+                                    <option value="1">Bangladesh</option>
+                                    <option value="2">India</option>
+                                    <option value="4">Pakistan</option>
+                                </select>
+                                <select class="shipping_select">
+                                    <option value="1">Select a State</option>
+                                    <option value="2">Select a State</option>
+                                    <option value="4">Select a State</option>
+                                </select>
+                                <input type="text" placeholder="Postcode/Zipcode">
+                                <a class="gray_btn" href="#">Update Details</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="out_button_area">
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <div class="checkout_btn_inner d-flex align-items-center">
+                               
+                                <a asp-action="ThanhToan"  class="primary-btn">Proceed to checkout</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</section>
+<!--================End Cart Area =================-->
